@@ -1,0 +1,61 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-04 09:33:16
+ * @LastEditTime: 2021-06-04 15:04:34
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>demo</title>
+</head>
+<style>
+    ul li{
+        list-style: none;
+    }
+    .isActive{
+        color: black;
+    }
+    .Active{
+        color: red;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            <li :class="getclass()" v-for="(item,index) in items">{{index}}--{{item.message}}</li>
+        </ul>
+        <button v-on:click="getisclass">变色</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                items: [
+                    {message: 'banner'},
+                    {message: 'nav'},
+                    {message: 'menu'},
+                    {message: '菜单'},
+                ],
+                getred: false,
+                getblack: true,
+            },
+            methods: {
+                getclass: function(){
+                    return {isActive: this.getblack, Active: this.getred}
+                },
+                getisclass: function(){
+                   this.getred= !this.getred
+                }
+            },
+        });
+    </script>
+</body>
+</html>

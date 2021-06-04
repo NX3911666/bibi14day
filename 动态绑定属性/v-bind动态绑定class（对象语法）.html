@@ -1,0 +1,55 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-04 09:32:30
+ * @LastEditTime: 2021-06-04 14:27:25
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>对象语法</title>
+</head>
+<style>
+    .isActive{
+        color: red;
+    }
+    .Active{
+        color: black;
+    }
+</style>
+<body>
+    <div id="app">
+        <span v-bind:class="{isActive: red,Active: black}">{{msg}}</span>
+        <!-- 动态绑定对象语法 -->
+        <span v-bind:class="getclasse()">{{msg}}</span>
+        <!-- 对象绑定数组语法 -->
+        <!-- <span v-bind:class="[isActive, Active]">{{msg}}</span> -->
+        <button @click="bthbutton">变色</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: 'hello',
+                red: true,
+                black: true,
+            },
+            methods: {
+                getclasse: function(){
+                    return {isActive: this.red,Active: this.black}
+                },
+                bthbutton: function(){
+                    this.black= !this.black
+                }
+            }
+        });
+    </script>
+</body>
+</html>

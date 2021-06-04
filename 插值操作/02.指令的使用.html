@@ -1,0 +1,48 @@
+<!--
+ * @Description: vue基础
+ * @Author: du jinhai
+ * @Date: 2021-06-02 17:03:05
+ * @LastEditTime: 2021-06-02 17:45:22
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>指令</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <!-- 绑定的值不会改变 -->
+        <h2 v-once>{{message}}</h2>
+        <!-- 解析html标签 -->
+        <h2 v-html="url"></h2>
+        <!-- 文本插值，标签内无法拼接使用 -->
+        <h2 v-text="Text"></h2>
+        <!-- 将标签内的文本原封不动的显示出来 -->
+        <h2 v-pre>{{url}}</h2>
+        <!-- 斗篷，取消浏览器解析显示代码的问题 -->
+        <h2 v-clock>{{message}}</h2>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message:'Hello Word',
+                url:'<a href="http://www.baidu.com">百度一下</a>',
+                Text: '李银河',
+
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>
