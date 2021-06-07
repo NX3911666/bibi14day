@@ -1,0 +1,58 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-07 14:41:17
+ * @LastEditTime: 2021-06-07 15:23:36
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{fullName}}</span>
+        <!-- <h1>{{fullName}}</h1> -->
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                firstName: 'du',
+                lastName: 'jinhai'
+            },
+            computed:{
+                // 计算属性一般没有set方法
+                fullName:{
+                    get:function(){
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set:function(newValue){
+                        console.log('执行了set方法');
+                        var names = newValue.split(' ');
+                        this.firstName = names[0];
+                        this.lastName = names[names.length-1];
+                        
+                    }
+                },
+                // 所以可以直接简写
+                // fullName:function(){
+                //     return this.firstName + ' ' + this.lastName
+                // }
+                // 当然如果需要可以增加
+
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

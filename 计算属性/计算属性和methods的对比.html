@@ -1,0 +1,66 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-07 15:28:36
+ * @LastEditTime: 2021-06-07 15:55:41
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 第一种，直接进行拼接 -->
+        <h2>{{firstName}} {{lastName}}</h2>
+        <!-- 第二种，使用methods函数方式 -->
+        <h2>{{getfullName()}}</h2>
+        <h2>{{getfullName()}}</h2>
+        <h2>{{getfullName()}}</h2>
+        <h2>{{getfullName()}}</h2>
+        <h2>{{getfullName()}}</h2>
+        <!-- 第三种，使用计算属性 -->
+        <h3>{{fullName}}</h3> 
+        <h3>{{fullName}}</h3>
+        <h3>{{fullName}}</h3>
+        <h3>{{fullName}}</h3>
+        <h3>{{fullName}}</h3>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                firstName: 'du',
+                lastName: 'jinhai'
+            },
+            methods: {
+                getfullName:function(){
+                    //每次都会调用
+                    console.log('getfullName()')
+                    return this.firstName +' '+ this.lastName
+                }
+            },
+            computed:{
+                // fullName:{
+                //     get:function(){
+                //         return this.firstName +' '+ this.lastName
+                //     }
+                // }
+                
+                fullName:function(){
+                    // 输出只调用一次，有缓存，效率高
+                    console.log('fullName')
+                    return this.firstName +' '+ this.lastName
+                }
+            }
+        });
+    </script>
+</body>
+</html>
