@@ -1,0 +1,72 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-08 13:58:59
+ * @LastEditTime: 2021-06-08 15:40:21
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>let</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                    
+            },
+        });
+        {
+            let a =12;
+            var b =45;
+            console.log(a)  //输出12
+        }
+        // ReferenceError: a is not defined.因为let只在块级作用域内有效
+        console.log(a);
+        // 输出b=45
+        console.log(b);
+        for (let i = 0; i < i.length; i++) {
+            const element = i[i];
+            
+        }
+        console.log(i);
+        // 使用var类型定义i的值，全局内都有效，所以最后输出的是10
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function(){
+                console.log(i);
+            };
+            // console.log(i);
+        }
+        a[6](); //10
+        // 使用let类型定义的i的值，只在块级作用域内有效，最后输出的是6
+        var a = [];
+        for (let i = 0; i < 10; i++) {
+            a[i] = function(){
+                console.log(i);
+            };
+            // console.log(i);
+        }
+        a[6](); //10
+        // 输出三个abc，说明函数内部的变量i与循环变量i不在同一个作用域
+        for (let i = 0; i < 3; i++) {
+            let i = 'abc'
+            console.log(i);          
+        }
+    </script>
+</body>
+</html>
