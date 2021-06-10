@@ -1,0 +1,49 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-10 10:16:05
+ * @LastEditTime: 2021-06-10 11:05:03
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.块级作用域</title>
+</head>
+<body>
+    <div>
+        <button>提交</button>
+        <button>提交</button>
+        <button>提交</button>
+        <button>提交</button>
+    </div>
+    <script>
+        //01.ES5中不使用闭包，用var定义 错误的输出
+        // var bths =document.getElementsByTagName('button');
+        // for (var i = 0; i < bths.length; i++) {
+        //     bths[i].addEventListener('click',function(){
+        //         console.log('第' + i +'个按钮被点击');
+        //     })
+        // }
+        //02.在ES5中使用闭包，处理正确
+        var bths =document.getElementsByTagName('button');
+        for (var i = 0; i < bths.length; i++) {
+            (function(i){
+                bths[i].addEventListener('click',function(){
+                    console.log('第' + i + '个按钮被点击');
+                })
+            })(i)
+        }
+        // 03.使用ES6中的语法，let定义
+        var bths =document.getElementsByTagName('button');
+        for (let i = 0; i < bths.length; i++) {
+            bths[i].addEventListener('click',function(){
+                console.log('第' + i + '个按钮被点击');
+            })   
+        }
+    </script>
+</body>
+</html>
