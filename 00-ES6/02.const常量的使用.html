@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: du jinhai
  * @Date: 2021-06-10 11:17:29
- * @LastEditTime: 2021-06-10 16:58:09
+ * @LastEditTime: 2021-06-11 10:04:23
  * @LastEditors: du jinhai
 -->
 <!DOCTYPE html>
@@ -17,14 +17,24 @@
     <button @click="submit">点击我</button>
     <script>
         // 注意一：一旦给修饰的标识符赋值，就不能修改
-        const PI = 3.14;
-        const PI =3;  //报错
+        //const PI = 3.14;
+        //const PI =3;  //报错
         // 注意二： 使用const 定义标识符，必须定义地址
-        const name;
-        // 注意三： 常量的含义指的事对象不能修改，但是可以改变对象内部的属性
-        const foo = {};
-        foo.prop = 123;
-        foo.prop = 345; //输出345
+        //const name;
+        // 注意三： 常量的含义是指定的对象不能修改，但是可以改变对象内部的属性
+        //const foo = {};
+        //foo.prop = 123;
+        //foo.prop = 345; //输出345
+        const obj = {
+            names: 'dujinhai',
+            age: 12,
+            height: 1.88,
+        }
+        console.log(obj);
+        // obj.names = 'dahai';
+        // obg.age = 45;
+        // obj.height = 2.00;
+        // console.log(obj.names);
         
 
     </script>

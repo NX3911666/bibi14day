@@ -1,0 +1,34 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-11 09:34:40
+ * @LastEditTime: 2021-06-11 09:48:43
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本用法</title>
+</head>
+<!-- 数组的解构赋值： -->
+<!-- ES6允许按照一定模式，从数组中提取值，对变量进行赋值，这被称为解构（Destructuring） -->
+<body>
+    <span id="demo">
+
+    </span>
+    <script>
+        // 模式匹配
+        let [a , b ,c] = [1, 2 ,3];
+        document.getElementById("demo").innerHTML=[a ,b ,c];
+        let [d , , f] = [1];
+        console.log(d);
+        // 嵌套数组 
+        let [foo ,[[bar], baz]] =[1, [[2], 3]];
+        console.log(foo, bar ,baz);
+        
+    </script>
+</body>
+</html>

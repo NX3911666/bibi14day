@@ -1,0 +1,52 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-11 10:10:58
+ * @LastEditTime: 2021-06-11 11:28:26
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的增强写法</title>
+</head>
+<body>
+    <script>
+        // ES5之前属性的简写
+        let name = 'dujinhai'
+        let age = 12
+        // const obj1 = {
+        //     name: name,
+        //     age: age,
+        // }
+        // console.log(obj1);
+        // ES6之后属性的简写
+        const obj2 = {
+            name,
+            age
+        }
+        console.log(obj2);
+
+        //函数的增强写法
+        // ES5:
+        const obj =  {
+            run: function () {
+                
+            },
+        }
+        // ES6:
+        const obg = {
+            run(){
+
+            },
+            est(){
+                
+            }
+        }
+
+    </script>
+</body>
+</html>

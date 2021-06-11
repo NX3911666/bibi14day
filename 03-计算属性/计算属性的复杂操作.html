@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <p>总的价格为： {{totalprice}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                book:[
+                    {id: 110, name: '黑客编程', price: 119},
+                    {id: 112, name: '常用命令大全', price: 159},
+                    {id: 113, name: '计算机编程原理', price: 100},
+                ]
+            },
+            computed: {
+                totalprice: function(){
+                    let result = 0;
+                    for (let i = 0;i < this.book.length; i++){
+                        result += this.book[i].price
+                    }
+                    return result;
+                }
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

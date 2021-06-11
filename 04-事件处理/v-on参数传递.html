@@ -1,0 +1,40 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-11 16:33:44
+ * @LastEditTime: 2021-06-11 19:00:23
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>v-on参数传递</title>
+</head>
+<body>
+    <div id="app">
+        <button @click =" warn('Form cannot be submitted yet',$event)">submit</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 12,
+            },
+            methods: {
+               warn(message, event){
+                   if (event) {
+                       event.preventDefaule()
+                   }
+                   alert(message)
+               }
+            },
+        });
+    </script>
+</body>
+</html>

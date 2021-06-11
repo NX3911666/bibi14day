@@ -1,0 +1,53 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-11 14:41:18
+ * @LastEditTime: 2021-06-11 16:33:21
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+
+        <!-- 监听事件 -->
+        <!-- <button v-on:click="counter += 1">提交</button>
+        <p>The button above has been clicked {{ counter }} times.</p> -->
+        <!-- 事件处理方法 -->
+       <span>{{counter}}</span>
+       <button type="button" @click = "increment">+</button>
+       <button type="button" @click = "decrement">-</button>
+        <!-- 内联处理器中的方法 -->
+        <button type="button" @click = "say('hi')">say hi</button>
+        <button type="button" @click = "say('what')">say what</button>
+        <!-- 参数传递 -->
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                  counter: 0,                
+            },
+            methods: {
+                increment(){
+                    this.counter+=1;
+                },
+                decrement(){
+                    this.counter-=1;
+                },
+                say(message){
+                    alert(message);
+                }
+            },
+        });
+    </script>
+</body>
+</html>
