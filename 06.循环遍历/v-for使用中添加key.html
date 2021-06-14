@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<!-- 在使用v-for是通常可以加入一个key属性，绑定唯一属性，来提升性能 -->
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in letters" :key="item">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                letters: ['a', 'b', 'c', 'd', 'e']
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

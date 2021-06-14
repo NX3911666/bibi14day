@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>案例</title>
+</head>
+<!-- key属性表示两个元素是完全独立的，不要复用他们 -->
+<body>
+    <div id="app">
+        <span v-if="isuser">
+            <label for="emali">邮箱</label>
+            <input type="email" name="邮箱" id="" placeholder="请输入你的邮箱" key="userEmali">
+        </span>
+        <span  v-else>
+            <label for="phone">手机号</label>
+            <input type="number" name="手机号" id="phone" placeholder="请输入你的手机号" key="userphone">
+        </span>
+        <button @click="isuser = !isuser">切换登录</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isuser: true,
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

@@ -17,23 +17,41 @@
 </head>
 <body>
     <div id="app">
-        <button @click =" warn('Form cannot be submitted yet',$event)">submit</button>
+        <button type="submit" @click = "bth1Click(message)">提交1</button>
+        <button type="submit" @click = "bth2Click(name)">提交2</button>
+        <!-- 在事件定义时，写函数省略了小括号，但是函数本身是需要参数的，这个时候，
+        vue会默认将浏览器生成的even事件对象作为参数传入到方法 -->
+        <!-- 输出一个object对象 -->
+        <button type="submit" @click = "bth3Click">提交3</button>  
+        <!-- 定义方法时，我们既需要event对象，同时又需要其他参数 -->
+        <button type="submit" @click = "bth4Click(height,$event)">提交4</button>
+        <p id="getevent"></p>
     </div>
 
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                message: 12,
+                message: 123,
+                name: 'dujinhai',
+                height: 1.88,
             },
             methods: {
-               warn(message, event){
-                   if (event) {
-                       event.preventDefaule()
-                   }
-                   alert(message)
-               }
-            },
+                bth1Click(aaa){
+                    console.log(aaa)
+                },
+                bth2Click(name){
+                    alert(name);
+                },
+                bth3Click(age){
+                    alert(age);
+                    console.log(age)
+                },
+                bth4Click(height,enevt){
+                    console.log(height,event),
+                    document.getElementById("getevent").innerHTML= event.offsetY;
+                }
+            }
         });
     </script>
 </body>

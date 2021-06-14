@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>v-on修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1..stop修饰符的使用 -->
+        <div @click="divClick">
+            <button  @Click.stop="bthClick">提交</button>
+        </div>
+        <!-- 2..prevent修饰符的使用 -->
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="formClick">
+        </form>
+        <!-- 3.监听某个键盘的键帽 -->
+        <form action="#">
+            <input type="text" name="user" id="">
+            <input type="number" name="iPhone" id="">
+            <input type="submit" value="提交"  @keyup.enter="keyUp">
+        </form>
+        <input type="text" name="" id=" " class="text" @keyup.enter="keyUp">
+        <!-- 4.按钮只使用一次 -->
+        <input type="button" class="once" @click.once="login" value="登录"> 
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                divClick(){
+                    console.log("divClick")
+                },
+                bthClick(){
+                    console.log("bthClick")
+                },
+                formClick(){
+                    console.log("fromClick")
+                },
+                keyUp(){
+                    console.log("enter")
+                },
+                login(){
+                    console.log("login")
+                }
+
+            },
+        });
+    </script>
+</body>
+</html>
