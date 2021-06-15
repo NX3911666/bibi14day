@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>点击换颜色</title>
+</head>
+<style>
+    ul li{
+        list-style: none;
+    }
+    .active{
+        color: red;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item ,index) in movies" 
+            :class="{active: currentIndex === index}"
+            @click="liclick(index)">
+            {{index}}.{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                movies: [
+                    '白贼王','白发魔女','海王','我的女儿'
+                ],
+                currentIndex: 0,  //记录状态
+            },
+            methods: {
+                liclick(index){
+                    this.currentIndex = index
+                }
+            },
+        });
+    </script>
+</body>
+</html>
