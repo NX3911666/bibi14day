@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<style>
+    .active{
+        background-color: aqua;
+    }
+</style>
+<body>
+    <div id="app">
+        <div class="tab">
+            <ul>
+              <li @click='change(index)' :class='currentIndex==index?"active":""' :key='item.id' v-for='(item,index) in list'>{{item.title}}</li>
+            </ul>
+            <div :class='currentIndex==index?"current":""' :key='item.id' v-for='(item, index) in list'>
+              <img :src="item.path">
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list:[
+                    {id: 1, title: 'apple', path: '../static/img/01.jpeg'},
+                    {id: 2, title: 'origin', path: '../static/img/02.jpeg'},
+                    {id: 3, title: 'banner', path: '../static/img/03.jpeg'}
+                ],
+                currentIndex: 0
+            },
+            methods: {
+                change(index){
+                    this.currentIndex = index
+                }
+            },
+        });
+    </script>
+</body>
+</html>

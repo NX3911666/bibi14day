@@ -1,0 +1,99 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-17 13:44:16
+ * @LastEditTime: 2021-06-17 18:11:15
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>购物车</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div v-if="list.length">
+        <table>
+            <thead>
+                <tr>
+                    <th>/</th>
+                    <th>书籍名称</th>
+                    <th>出版日期</th>
+                    <th>价格</th>
+                    <th>数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.time}}</td>
+                    <td>{{item.price | showPrice}}</td>
+                    <td>
+                        <!-- 决定按钮是否要交互，解决书数量为负数的情况 -->
+                        <button @click="decrement(index)" v-bind:disabled="item.count <= 1">-</button>
+                        {{item.count}}
+                        <button @click="increment(index)">+</button>
+                    </td>
+                    <td>
+                        <button @click="headleRemove(index)">移除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2> 总价格：{{totalprice | showPrice}}</h2>
+    </div>
+        <div v-else><h1>购物车为空</h1> </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list:[
+                    {id: 1, name:'《算法导论》', time: '2015.6', price: 85, count: 1},
+                    {id: 2, name:'《Unix编程艺术》', time: '2009', price: 89, count: 1},
+                    {id: 3, name:'《代码大全》', time: '2008-9', price: 87, count: 1},
+                    {id: 4, name:'《vue进阶》', time: '2009-9', price: 100, count: 1},
+                    {id: 5, name:'《计算机原理》', time: '2021-9', price: 123, count: 1}
+                ]
+            },
+            methods: {
+                increment(index){
+                    return this.list[index].count++;
+                },
+                decrement(index){
+                    return this.list[index].count--;
+                },
+                headleRemove(index){
+                    this.list.splice(index, 1);
+                }
+               
+            },
+            //过滤器的使用
+            filters:{
+                    showPrice(price){
+                        return '￥' + price.toFixed(2)
+                    }
+            },
+            computed:{
+                totalprice(){
+                    let total = 0;
+                    for (let i = 0; i < this.list.length; i++) {
+                        const item = this.list[i];
+                        total += item.price * item.count
+                    }
+                    return total;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

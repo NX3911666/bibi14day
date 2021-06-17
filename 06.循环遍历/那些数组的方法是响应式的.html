@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: du jinhai
  * @Date: 2021-06-15 10:09:08
- * @LastEditTime: 2021-06-15 15:49:30
+ * @LastEditTime: 2021-06-17 16:04:27
  * @LastEditors: du jinhai
 -->
 <!DOCTYPE html>
@@ -34,20 +34,34 @@
             methods: {
                 bthclick(){
                     //尾部添加
-                    // this.letters.push('aaa')
+                    // 1.this.letters.push('aaa')
                     //删除最后一个
-                    // this.letters.pop()
+                    // 2.this.letters.pop()
                     //删除第一个
-                    // this.letters.shift()
+                    // 3.this.letters.shift()
                     //在最前面添加
-                    // this.letters.unshift('FFF')
-                    //参数（数组坐标，送坐标处删除的数量）
-                    //  this.letters.splice(1 ,2)
-                    //排序
-                    //  this.Number.sort()
-                    //倒叙
-                     this.letters.reverse()
+                    // 4.this.letters.unshift('FFF')
+
+                    // 删除时: 不带参数，表示全部删除，
+                    // 5.this.letters.splice()
+                    //           带参数  （要删除的起始位置，后面个数） 
+                     //this.letters.splice(2 ,2) //删除了第二个后面的两个数字
+                    //  替换: (起始位置，插入的个数，插入的内容)
+                    //  this.letters.splice(1 ,2 , 'B','C')
+
+                     
+                    //  排序
+                    // 6.this.letters.sort()
+                    // 反转
+                    // 7.this.letters.reverse()
+                    // 非响应式: 数组的值改变，却不渲染dom
+                    // this.letters[2]='B';
+                    // 8.使用vue函数改变值：.set()方法
+                    // set(要改变的对象，索引值，修改的值)
+                    Vue.set(this.letters, 0 ,'A')
+
                 }
+                
             },
         });
     </script>
