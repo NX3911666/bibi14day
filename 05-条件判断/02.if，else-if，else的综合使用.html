@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>条件判断实际使用</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{result}}</span>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                score: 90,
+            },
+            methods: {
+
+            },
+            computed: {
+                result(){
+                    let showmessage = '';
+                    if (this.score >= 90) {
+                        showmessage = '优秀'
+                    }
+                    else if(this.score >= 80){
+                        showmessage ='良好'
+                    }
+                    else if(this.score >= 60){
+                        showmessage = '及格'
+                    }
+                    else(showmessage = '不及格') 
+                    return showmessage
+                },
+            }
+        });
+    </script>
+</body>
+</html>

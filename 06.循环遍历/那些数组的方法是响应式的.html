@@ -1,0 +1,55 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-15 10:09:08
+ * @LastEditTime: 2021-06-15 15:49:30
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in letters">{{item}}</li>
+            <li v-for="items in Number">{{items}}</li>
+        </ul>
+        <button @click.once="bthclick">改变</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                letters:['a', 'b', 'c', 'd', 'f'],
+                Number: [34 ,43 ,343, 543, 34]
+            },
+            methods: {
+                bthclick(){
+                    //尾部添加
+                    // this.letters.push('aaa')
+                    //删除最后一个
+                    // this.letters.pop()
+                    //删除第一个
+                    // this.letters.shift()
+                    //在最前面添加
+                    // this.letters.unshift('FFF')
+                    //参数（数组坐标，送坐标处删除的数量）
+                    //  this.letters.splice(1 ,2)
+                    //排序
+                    //  this.Number.sort()
+                    //倒叙
+                     this.letters.reverse()
+                }
+            },
+        });
+    </script>
+</body>
+</html>

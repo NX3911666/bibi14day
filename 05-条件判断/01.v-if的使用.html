@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>v-if</title>
+</head>
+<body>
+    <div id="app">
+        <span v-if="isshow">{{message}}</span>
+        <h2 v-else-if="name">{{name}}</h2>
+        <span v-if="score >= 90" >优秀</span>
+        <span v-else-if="score >= 80">良好</span>
+        <span v-else-if="score >= 60">及格</span>
+        <span v-else="score < 60">不及格</span>
+        <h2>{{age}}</h2>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: '我是v-if',
+                isshow: true,
+                name: '我是if-else',
+                score: 98,
+                age: ' ',
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

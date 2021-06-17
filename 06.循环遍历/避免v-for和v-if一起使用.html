@@ -1,0 +1,43 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-15 15:28:09
+ * @LastEditTime: 2021-06-15 16:25:33
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="user in users">{{user}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                users: ['螃蟹', '乌龟', '小兔子', '小鸡']
+            },
+            methods: {
+
+            },
+            computed: {
+                activeUsers:function(){
+                    this.users
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>

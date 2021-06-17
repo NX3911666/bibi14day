@@ -1,0 +1,58 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-11 16:33:44
+ * @LastEditTime: 2021-06-11 19:00:23
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>v-on参数传递</title>
+</head>
+<body>
+    <div id="app">
+        <button type="submit" @click = "bth1Click(message)">提交1</button>
+        <button type="submit" @click = "bth2Click(name)">提交2</button>
+        <!-- 在事件定义时，写函数省略了小括号，但是函数本身是需要参数的，这个时候，
+        vue会默认将浏览器生成的even事件对象作为参数传入到方法 -->
+        <!-- 输出一个object对象 -->
+        <button type="submit" @click = "bth3Click">提交3</button>  
+        <!-- 定义方法时，我们既需要event对象，同时又需要其他参数 -->
+        <button type="submit" @click = "bth4Click(height,$event)">提交4</button>
+        <p id="getevent"></p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 123,
+                name: 'dujinhai',
+                height: 1.88,
+            },
+            methods: {
+                bth1Click(aaa){
+                    console.log(aaa)
+                },
+                bth2Click(name){
+                    alert(name);
+                },
+                bth3Click(age){
+                    alert(age);
+                    console.log(age)
+                },
+                bth4Click(height,enevt){
+                    console.log(height,event),
+                    document.getElementById("getevent").innerHTML= event.offsetY;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

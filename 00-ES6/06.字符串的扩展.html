@@ -1,0 +1,72 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-15 16:44:23
+ * @LastEditTime: 2021-06-15 17:39:49
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <!-- <script>Vue.config.productionTip = false</script> -->
+    <title>字符串的扩展</title>
+</head>
+<body>
+    <div id="app">
+        <div class="demo1">
+            <h2>1.字符的Unicode表示法</h2>
+            "\u0061"  
+            <!-- a -->
+        </div>
+        <div class="demo2">
+            <h2>2.字符串的遍历器接口</h2>
+           <script>
+               function Iterators(){
+                for(let codePoint of 'for'){
+                        console.log(codePoint)
+                  }    
+               }
+               Iterators()
+           </script>
+           <span></span>
+        </div>
+        <div class="demo3">
+            <!-- 除了遍历字符串，这个遍历器最大的优点是可以识别大于0xFFFF的码点，传统的for循环无法识别这样的码点。 -->
+            <script>
+                // String.fromCodePoint() 静态方法返回使用指定的代码点序列创建的字符串。
+                let text = String.fromCodePoint(0x20BB7);
+                for(let i=0 ;i< text.length; i++){
+                    console.log(text[i]);
+                }
+                // " "
+                // " "  传统方式无法输出
+
+                for (let i of text) {
+                    console.log(i);
+                }
+                // "𠮷"
+
+            </script>
+        </div>
+
+    </div>
+
+    <script>
+        // var app = new vue({
+        //     el:'#app',
+        //     data: {
+        //         codePoint: 'foo'
+        //     },
+        //     methods: {
+                
+
+        //     }
+        // })
+        
+    </script>
+</body>
+</html>
