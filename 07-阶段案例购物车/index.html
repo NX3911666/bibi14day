@@ -58,7 +58,7 @@
             el: "#app",
             data: {
                 list:[
-                    {id: 1, name:'《算法导论》', time: '2015.6', price: 85, count: 1},
+                    {id: 1, name:'《算法导论》', time: 2015.6, price: 85, count: 1},
                     {id: 2, name:'《Unix编程艺术》', time: '2009', price: 89, count: 1},
                     {id: 3, name:'《代码大全》', time: '2008-9', price: 87, count: 1},
                     {id: 4, name:'《vue进阶》', time: '2009-9', price: 100, count: 1},
@@ -67,13 +67,13 @@
             },
             methods: {
                 increment(index){
-                    return this.list[index].count++;
+                     this.list[index].count++;
                 },
                 decrement(index){
-                    return this.list[index].count--;
+                     this.list[index].count--;
                 },
                 headleRemove(index){
-                    this.list.splice(index, 1);
+                     this.list.splice(index, 1);
                 }
                
             },
@@ -85,9 +85,24 @@
             },
             computed:{
                 totalprice(){
-                    let total = 0;
-                    for (let i = 0; i < this.list.length; i++) {
-                        const item = this.list[i];
+                    //第一种方式
+                    // let total = 0;
+                    // for (let i = 0; i < this.list.length; i++) {
+                    //     const item = this.list[i];
+                    //     total += item.price * item.count
+                    // }
+                    // return total;
+                    //第二种方式
+                    // let total = 0;
+                    // for (let i in this.list){
+                    //     let item =this.list[i];
+                    //     total += item.price * item.count
+                    // }
+                    // return total;
+
+                    //第三种方式
+                    let total =0;
+                    for(let item of this.list){
                         total += item.price * item.count
                     }
                     return total;
