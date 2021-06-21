@@ -1,0 +1,68 @@
+<!--
+ * @Description: 
+ * @Author: du jinhai
+ * @Date: 2021-06-21 10:24:30
+ * @LastEditTime: 2021-06-21 16:16:58
+ * @LastEditors: du jinhai
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 高阶段数
+      1.filter
+      2.map
+      3.reduce -->
+    <script>
+        //1.filter()函数  返回类型 true and false  true过滤符合条件的数值，不满足过滤掉
+        const nums = [56, 12 ,56 ,78 ,75, 80, 65]
+        let Newnums = nums.filter(function(n ,index, self ){
+            return n % 2 !==0;  //如果满足返回 true  赋值给新数组Newnums
+            
+        })
+        //2.map()函数的使用 ：对前面的数组进行映射
+        console.log(Newnums)  //输出75
+
+        let New2nums = Newnums.map(function(n){
+            return n * 2
+        })
+        console.log(New2nums)
+
+        //3.reduce()函数的使用: 对前面的值进行汇总
+        let New3nums = New2nums.reduce(function(preValue, n){
+            return preValue + n
+        },0)
+        console.log(New3nums)
+    </script>
+<!-- 三个函数合并使用 -->
+    <script>  
+        const nums1 = [56, 12 ,56 ,78 ,75, 80, 65]
+        let Newnums1 = nums1.filter(function(n){
+            return n % 2 !==0;  //筛选出奇数
+        }).map(function(n){
+            return n*2
+        }).reduce(function(preValue , n){
+            return preValue + n
+        },0)
+        console.log(Newnums1)
+    </script>
+<!-- 使用箭头函数 -->
+    <script>
+        const nums2 = [56, 12 ,56 ,78 ,75, 80, 65]
+        let Newnums2 =nums2.filter(n => n % 2 !==0).map(n => n *2).reduce((pre , n) =>pre + n )
+        console.log(Newnums2)
+    </script>
+
+
+</body>
+</html>
