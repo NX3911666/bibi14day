@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<!-- v-model其实是一个语法糖，他的背后是包含两个操作 ：
+  1.v-bind绑定一个value属性
+  2.v-on属性给当前元素绑定input事件 -->
+<body>
+    <div id="app">
+        <!-- <input type="text" :value="message" v-on:input="valueChange"> -->
+        <input type="text" :value="message" @input="message = $event.target.value"> 
+        <p>
+            {{message}}
+        </p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: ''
+            },
+            methods: {
+                // valueChange(event){
+                //     this.message = event.target.value 
+                // }
+            },
+        });
+    </script>
+</body>
+</html>

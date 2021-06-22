@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 单选 -->
+        <select v-model="mySelect" id="">
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="橙子">橙子</option>
+            <option value="茄子">茄子</option>
+        </select>
+        <p>你选择的是<span>{{mySelect}}</span></p>
+        <!-- 多洗 -->
+        <select name="mySelect2" id="" multiple v-model="mySelect2">
+            <option value="name">姓名</option>
+            <option value="age">年龄</option>
+            <option value="sex">性别</option>
+            <option value="ipone">手机号</option>
+        </select>
+        <p>你选择的是<span>{{mySelect2}}</span></p>
+
+        <!-- 用 v-for 渲染的动态选项 -->
+        <select  v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">{{option.name}}</option>
+        </select>
+        <p>你选择的是<span>{{selected}}</span></p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                mySelect: '苹果',
+                mySelect2: [],
+                selected: '小胖',
+                options:[
+                    {name: 'dujin',value: 'A'},
+                    {name: '小胖', value: 'B'},
+                    {name: '奥特曼', value: 'C'}
+                ],
+
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

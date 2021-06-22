@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>使用value动态绑定值属性</title>
+</head>
+<body>
+    <div id="app">
+        <label :for="item" v-for="item in myhobbies">
+            <input type="checkbox" name="" :id="item" :value="item" v-model="hobbies">{{item}}
+        </label>
+        <p>你选择的是<span>{{hobbies}}</span></p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                hobbies: [],
+                myhobbies:[
+                    '打篮球', '踢足球', '乒乓球', '铅球'
+                ]
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

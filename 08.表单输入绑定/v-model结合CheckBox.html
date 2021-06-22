@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <label for="agree">
+            <input type="checkbox"  id="agree" v-model="isAgree">同意协议
+        </label>
+        <button :disabled="!isAgree">下一步</button>
+        <form action="#">
+            <input type="checkbox" value="A" id="A" v-model="check1">A
+            <input type="checkbox" value="B" id="B" v-model="check1">B
+            <input type="checkbox" value="C" id="C" v-model="check1">C
+            <input type="checkbox" value="D" id="D" v-model="check1">D
+        </form>
+        <p>你选择的是 {{check1}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isAgree: false ,
+                check1: []
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>
