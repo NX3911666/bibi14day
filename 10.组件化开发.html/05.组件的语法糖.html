@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+        <cpn2></cpn2>
+        <cpn3></cpn3>
+    </div>
+    <template id="my-cpn3">
+        <div>
+           <p>我是标题</p>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('cpn1',{
+            template:'<p>你好</p>'
+        })
+        
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            //局部注册
+            components:{
+                cpn2: {
+                    template:'<p>你好我是第二个组件</p>'
+                },
+                cpn3:{
+                    template: "#my-cpn3"  //绑定id的标签 #
+                }
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>
