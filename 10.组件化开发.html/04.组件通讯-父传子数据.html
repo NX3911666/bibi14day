@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <cpn :message="message"></cpn>
+    </div>
+    <template id="cpn1">
+       <div>{{message}}</div>
+    </template>
+    <script>
+        
+        var app = new Vue({
+            el: "#app",
+            data: {
+               message: '不好'
+            },
+            components:{
+                cpn :{
+                    template: "#cpn1" ,
+                    props: ['message']
+                }
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+</html>

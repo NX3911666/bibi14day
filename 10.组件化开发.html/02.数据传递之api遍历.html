@@ -10,26 +10,29 @@
 </head>
 <body>
     <div id="app">
-        <Firstcomponent 
+        <!-- <Firstcomponent 
         v-for="post in posts"
         v-bind:key="post.id"
-        v-bind:title="post.title"></Firstcomponent>
+        v-bind:title="post.title"></Firstcomponent> -->
+        <Secondcomponent></Secondcomponent>
     </div>
-    <script>
-        const myFirstcomponent = Vue.extend({
-            props: ["title"],
-            template: "<p>{{title}}</p>"
-        })
-        Vue.component('Firstcomponent',myFirstcomponent)
-    </script>
+        <template id="mySecondcomponent" :posts="posts">
+            {{posts}}
+        </template>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                posts:[]
+                posts:[],
             },
-            methods: {
-
+            components:{
+                data:{
+                    return:{}
+                },
+                Secondcomponent: {
+                    template: '#mySecondcomponent',
+                    props: ['posts'],  
+                },
             },
             created: function(){
                 var vm = this;
@@ -39,8 +42,7 @@
                 })
                 .then(function(data){
                     vm.posts =data;
-                }); 
-                     
+                });        
             }
         });
     </script>
