@@ -10,20 +10,27 @@
 </head>
 <body>
     <div id="app">
-        <!-- <Firstcomponent 
+        <Secondcomponent 
         v-for="post in posts"
-        v-bind:key="post.id"
-        v-bind:title="post.title"></Firstcomponent> -->
-        <Secondcomponent></Secondcomponent>
+        :key="post.id"
+        :title="post.title"></Secondcomponent>
+        <!-- <ul>
+            <li v-for="post in posts"
+            :key="post.id"
+            :title="post.title">
+            {{post.title}}
+        </li>
+        </ul> -->
     </div>
-        <template id="mySecondcomponent" :posts="posts">
-            {{posts}}
+        <template id="mySecondcomponent" >
+            <p>{{title}}</p>
         </template>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
                 posts:[],
+                message: '你好'
             },
             components:{
                 data:{
@@ -31,7 +38,16 @@
                 },
                 Secondcomponent: {
                     template: '#mySecondcomponent',
-                    props: ['posts'],  
+                    props: ['message'],  
+                    // props: ['title'],
+                    props:{
+                        title:{
+                            type: Object ,
+                            default(){
+                                return {}
+                            }
+                        }
+                    }
                 },
             },
             created: function(){

@@ -84,3 +84,36 @@ Vue.component('cpn1',{
         template: "#my-cpn3"  //绑定id的标签 #
         }
 ```
+# $emit子传父自定义事件
+
+1. 在子组件中通过methods发射事件出去
+
+```javascript
+                    methods:{
+                        btnClick(item){
+                            //发射事件给父组件
+                            this.$emit('itemclick', item)
+                        }
+                    }
+```
+
+2. 父组件接收监听事件
+
+```html
+    <div id="app">
+        <div>
+            <!-- 接收事件 -->
+            <cpn @itemclick="cpnclick"></cpn>
+        </div>
+    </div>
+```
+
+3. 父组件调用传过来的数据
+
+```javascript
+            methods: {
+                cpnclick(item){
+                    console.log('cpnclick',item)
+                }
+            }
+```

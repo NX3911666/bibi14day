@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <child-cpn @increment="changeTotal" @decrement="changeTotal"></child-cpn>
+        <h2>点击次数: {{total}}</h2>
+    </div>
+    <template id="child-cpn">
+        <div>
+            <button @click="increment">+1</button>
+            <button @click="decrement">-1</button>
+        </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                total: 0
+            },
+            methods: {
+                changeTotal(counter){
+                    this.total = counter
+                }
+            },
+            components: {
+                'child-cpn': {
+                    type: Object,
+                    template: '#child-cpn',
+                    default(){
+                        return{}
+                    },
+                    data(){
+                        return {
+                            counter: 0 
+                        }
+                    },
+                    methods:{
+                        increment(){
+                            this.counter ++ ;
+                            this.$emit('increment',this.counter)
+                        },
+                        decrement(){
+                            this.counter --;
+                            this.$emit('decrement',this.counter)
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
