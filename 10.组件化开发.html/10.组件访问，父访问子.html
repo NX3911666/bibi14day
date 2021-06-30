@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>children/refs</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <cpn ref="aaa"></cpn>
+            <button @click="btnclick">提交</button>
+        </div>
+
+    </div>
+    <template id="cpn">
+        <div>
+            <p>你好，世界</p>
+        </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            components:{
+                cpn : {
+                    template: '#cpn',
+                    methods:{
+                        showmessage(){
+                            console.log('showmessage');
+                        }
+                    },
+                    data(){
+                        return {
+                            name: '我是子组件的name'
+                        }
+                    }
+                }
+            },
+            methods: {
+                btnclick(){
+                    // console.log(this.$children);
+                    // this.$children[0].showmessage();
+
+                    //refs ==> 对象类型，默认是空的对象，需要绑定 ref=""
+                    console.log(this.$refs.aaa.name);
+                    this.$refs.aaa.name;
+                }
+            },
+            
+        });
+    </script>
+</body>
+</html>

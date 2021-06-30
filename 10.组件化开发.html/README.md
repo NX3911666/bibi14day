@@ -110,10 +110,12 @@ Vue.component('cpn1',{
 
 3. 父组件调用传过来的数据
 
-```javascript
+```js
             methods: {
                 cpnclick(item){
                     console.log('cpnclick',item)
                 }
             }
 ```
+# prop属性
+
