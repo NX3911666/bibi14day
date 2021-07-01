@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <cpn></cpn>
+        </div>
+    </div>
+    <template id="cpn">
+        <div>
+            <button @click="btnclick">提交</button>
+        </div>
+    </template>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: '我是父组件，嘿嘿嘿'
+            },
+            methods: {
+
+            },
+            components:{
+                cpn:{
+                    template: "#cpn",
+                    methods: {
+                        btnclick(){
+                            console.log(this.$parent.message);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

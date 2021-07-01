@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>父子数据传递综合练习</title>
+</head>
+<!-- 功能一: 动态改变父子组件input的值 -->
+<!-- 功能二: 动态改变所有父子组件的值 -->
+<!-- 功能三: num1改变是num2的1000倍，num2是num1的千分之一 -->
+<body>
+    <div id="app">
+        <cpn :number1="num1"
+             :number2="num2"
+             @num1change="num1change"
+             @num2change="num2change"/>
+    </div>
+    <template id="cpn">
+        <div>
+            <p>{{number1}}</p>
+            <h1>data: <p>{{cnumber1}}</p></h1>
+            <!-- <input type="text" v-model="cnumber1"> -->
+            <input type="text" :value="cnumber1" @input="num1input">
+
+            <h1>{{number2}}</h1>
+            <h1>data: <p>{{cnumber2}}</p></h1>
+            <!-- <input type="text" v-model="cnumber2"> -->
+            <input type="text" :value="cnumber2" @input="num2input">
+        </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num1 : 1,
+                num2 : 2, 
+            },
+            methods: {
+                num1change(value){
+                    this.num1 = value;
+                },
+                num2change(value){
+                    this.num2 = value;
+                }
+
+            },
+            components: {
+                cpn:{
+                    template: '#cpn' ,
+                    props: {
+                        number1:{
+                            type: Number,
+                            default : 0
+                        },
+                        number2:{
+                            type: Number,
+                            default : 0 
+                        } 
+                    },
+                    data(){
+                        return {
+                            cnumber1 : this.number1,
+                            cnumber2 : this.number2
+                        }
+                    },
+                    methods:{
+                        num1input(event){
+                            //将input中的value值赋值给cnumbr1
+                            this.cnumber1 = parseInt(event.target.value);
+                            //将为了给父组件抛出值，发出事件
+                            this.$emit('num1change', this.cnumber1);
+                            //同时修饰number2的值
+                            this.cnumber2 = this.cnumber1 * 1000;
+                            this.$emit('num2change', this.cnumber2)
+                        },
+                        num2input(event){
+                            this.cnumber2 = parseInt(event.target.value);
+                            this.$emit('num2change', this.cnumber2)
+
+                            this.cnumber1 = this.cnumber2 / 100;
+                            this.$emit('num1change', this.cnumber1)
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

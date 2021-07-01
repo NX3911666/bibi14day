@@ -117,5 +117,47 @@ Vue.component('cpn1',{
                 }
             }
 ```
-# prop属性
+# 组件访问
+
+1. 父组件访问子组件
+
+```js
+//方式一： 不常用 会遍历整个子组件
+this.$children.
+
+//方式二： $refs(常用) 绑定要访问的组件
+this.$refs.<绑定的标签名>.<属性值>
+```
+2. 子访问父组件
+
+```js
+<cpn ref="aaa"></cpn>
+
+this.$parent.<标签名>.<属性值>
+```
+3. 插槽slot的基本使用
+
+```js
+//1.基本使用<slot></slot>
+//2.默认值<slot><button>  </button></slot>
+//3.如果内部有多个值，则全部替换
+//4.可多个插槽
+            <slot>
+                <button>提交</button>
+            </slot>
+```
+4. slot具名的使用
+```js
+                        <td><cpn><span slot="header">我是头部</span></cpn></td>
+                        <td><cpn><span slot="main">我是主体</span></cpn></td>
+                        <td><cpn><span slot="footer">我是底部</span></cpn></td>
+
+                        <template id="cpn">
+                            <div>
+                                <slot name="header"></slot>
+                                <slot name="main"></slot>
+                                <slot name="footer"></slot>
+                            </div>
+                        </template>
+```
 

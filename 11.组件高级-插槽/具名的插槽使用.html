@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title>Vue-demo</title>
+</head>
+
+    <div id="app">
+        <div>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th>
+                            <span>我是网页</span>
+                        </th>
+                    </tr>
+                </thead>
+                <table>
+                    <tr>
+                        <td><cpn><span slot="header">我是头部</span></cpn></td>
+                        <td><cpn><span slot="main">我是主体</span></cpn></td>
+                        <td><cpn><span slot="footer">我是底部</span></cpn></td>
+                    </tr>
+                </table>
+            </tbody>
+        </div>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot name="header"></slot>
+            <slot name="main"></slot>
+            <slot name="footer"></slot>
+        </div>
+    </template>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+
+            },
+            components:{
+                cpn :{
+                    template: '#cpn'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
