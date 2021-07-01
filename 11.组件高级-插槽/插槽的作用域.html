@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>Vue.config.productionTip = false</script>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <!-- 显示使用的是 app的作用域 -->
+        <cpn v-show="isShow"></cpn>
+    <cpn>
+        <!-- 固定执行slot-scope -->
+        <!-- .join 中间添加字符 -->
+        <div slot-scope="aaa">
+            <span v-for="item in aaa.data.join('-')">{{item}}</span>
+        </div>
+    </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+        你好世界
+        <slot :data="planguages">
+            <ul>
+                <li v-for="item in planguages">{{item}}</li>
+            </ul>
+        </slot>
+        </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: true  //作用域
+            },
+            methods: {},
+            components: {
+                cpn:{
+                    template: '#cpn',
+                    data(){
+                        return{
+                            isShow: false,  //组件作用域
+                            planguages: ['java', 'C++', 'python', 'GO', '易语言']
+                        }
+                    }
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>
