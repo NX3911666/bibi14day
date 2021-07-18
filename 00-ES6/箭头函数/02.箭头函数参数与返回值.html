@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数参数与返回值</title>
+</head>
+<body>
+    <script>
+        //1.参数问题
+        //1.1放入一个参数
+        const sum = (num1, num2) =>{
+            return num1 + num2
+        }
+        //1.2放入一个参数 小括号可以省略掉
+        const power = num =>{
+            return num * num
+        }
+        //2.函数中有多行代码时 直接顺序写出
+        const test = () =>{
+            console.log("hello word");
+            console.log("vue.js");
+        };
+        console.log(test());
+        //2.1函数中只有一行代码时 可简便写法
+        //正常写法 
+        // const mul = (num1, num2) => {
+        //     return num1 + num2
+        // }
+        //2.1简写
+        const mul = (num1, num2) => num1 * num2;
+        console.log(mul(20,30));
+        //2.2简写
+        // const demo = () =>{
+        //     console.log('hello Demo');
+        // }
+        const demo = () => console.log('hello Demo');
+        console.log(demo());
+
+
+
+    </script>
+</body>
+</html>

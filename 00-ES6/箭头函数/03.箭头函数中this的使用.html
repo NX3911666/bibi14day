@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数中this的使用</title>
+</head>
+<body>
+    <!-- 什么时候用箭头函数? -->
+    <!-- 当需要传递另外一个参数的值时 -->
+    <script>
+        // setTimeout(function(){
+        //     console.log(this);
+        // },1000)
+        // setTimeout(() => {
+        //     console.log(this);
+        // }, 1000)
+        // 问题：箭头函数中的this是如何查找的？
+        // 答案： 向最外层作用域中，一层层的查找this，直到有this的定义。
+        // const obj = {
+        //     aaa() {
+        //         setTimeout(function(){
+        //             console.log(this);  //window对象
+        //         })
+        //         setTimeout(() =>{
+        //             console.log(this);  //obj对象
+        //         })
+        //     }
+        // }
+        // obj.aaa()
+
+
+        const obj = {
+            aaa(){
+                setTimeout( function(){
+                    setTimeout(function(){
+                        console.log(this);  //window
+                    })
+                    setTimeout(() =>{
+                    console.log(this);  //window
+                  })
+                })
+                setTimeout(() =>{
+                    setTimeout(function(){
+                    console.log(this);  //window
+                    })
+
+                setTimeout(() =>{
+                console.log(this);  //obj
+                })
+                })
+            }
+        }
+        obj.aaa()
+    </script>
+</body>
+</html>
