@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        new Promise ( (resolve , reject) => {
+            setTimeout(()=> {
+                resolve('aaa')
+            },1000)
+        }).then(res => {
+            console.log(res, '第一层处理代码');
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve(res +'111')
+                })
+            }).then(res=>{
+                console.log(res,'第二层代码处理');
+                return new Promise ((resolve, reject)=>{
+                    setTimeout(()=>{
+                        resolve(res + '222')
+                    })
+                }).then(res=>{
+                    console.log(res,'第三层处理代码');
+                })
+            }).catch(err=>{
+                console.log(err);
+            })
+        })
+    </script>
+    <script>
+        //new Promise的简写
+        new Promise ((resolve, reject)=>{
+            setTimeout(() => {
+                resolve('简写aaa')
+            }, 3000);
+        }).then((data)=>{
+            console.log(data, '自己处理一次');
+            return Promise.resolve(data + '对结果进行第一次处理')
+        }).then(data=>{
+            console.log(data, '第一次处理');
+            return Promise.resolve(data, + '对结果进行第二次处理')
+        }).then(data=>{
+            console.log(data ,"第二次处理");
+        })
+    </script>
+    <script>
+        // Promise内部考虑到链式处理，可直接return 处理
+        new Promise ((resolve, reject)=>{
+            setTimeout(() => {
+                resolve('ccc链式简写')
+            }, 5000);
+        }).then(data=>{
+            console.log(data, '自己处理一次');
+            return data + '到这里进行第一次处理';
+        }).then(data=>{
+            console.log(data, '第二次处理');
+        })
+    </script>
+</body>
+</html>

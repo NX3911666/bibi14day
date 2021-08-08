@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //伪代码模拟ajax请求
+        // new Promise.all([
+        //     new Promise ((resolve, reject)=>{
+        //         $ajax({
+        //             url: 'url1',
+        //             success : function(data){
+        //                 resolve(data)
+        //             }
+        //         })
+        //     }),
+        //     new Promise ( (resolve, reject)=>{
+        //         $ajax({
+        //             url: 'url2',
+        //             success : function(data){
+        //                 resolve(data)
+        //             }
+        //         })
+        //     })
+        // ]).then(results=>{
+        //     results[0]
+        // })
+        Promise.all([
+        new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve({
+                    name: '大海',
+                    age: '23'
+                })
+            }, 1000);
+        }),
+        new Promise ((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve({
+                    name: '小海',
+                    age: '14'
+                })
+            },2000)
+        })
+        ]).then(results=>{
+            console.log(results);
+        })
+
+    </script>
+</body>
+</html>
