@@ -111,4 +111,4 @@ new Promise ((resolve, reject)=>{
             console.log(results);
         })
 ```
-![alt 结果](./20210808212654.png)
+![](https://picgo.dujinhai.top/img/20210808212654.png)
